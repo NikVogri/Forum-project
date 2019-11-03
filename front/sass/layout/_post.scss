@@ -1,0 +1,34 @@
+.main__post {
+  padding: 1rem 2rem;
+  margin: 0 auto;
+  border-bottom: solid 1px var(--main-color);
+
+  &-header {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    margin-top: .5rem;
+  }
+
+  &-text {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  &-rating {
+    display: flex;
+  }
+
+  &-like,
+  &-dislike {
+    cursor: pointer;
+    font-size: 1.5rem;
+    margin-right: .5rem;
+  }
+
+  &-poster {
+    font-size: 1.2rem;
+    display: inline-block;
+  }
+
+}

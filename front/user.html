@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Forum</title>
+  <meta name="description" content="Simple forum with backend">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+  <header class="header">
+    <div class="header__logo">
+      <h1 class="header__logo__main-text">Logo</h1>
+    </div>
+    <div class="header__input">
+      <form action="" class="header__input__form">
+        <input type="text" class="header__input__form__input" placeholder="Search forum...">
+        <a href="#" class="header__input__form__button no-decoration">Search</a>
+      </form>
+    </div>
+    <div class="header__user">
+      <a href="#" class="header__user__logout btn no-decoration">Log out</a>
+      <div class="user__profile">
+        <img src="./img/user.png" alt="{{ADD  NAME}}" class="user__profile__picture">
+        <p class="user__profile__username">Nick</p>
+      </div>
+    </div>
+  </header>
+  <section class="layout">
+    <aside class="layout__left">
+      LEFT SIDE
+    </aside>
+    <main class="layout__main">
+      <h3 class="user-page__header">Your account settings</h3>
+      <div class="user__form">
+        <form action="" class="user__form-form">
+          <p class="user__form-text">Name</p>
+          <input type="text" class="user__form-input">
+          <p class="user__form-text">Email</p>
+          <input type="email" class="user__form-input">
+          <button class="user__form-button btn btn--form-white">SAVE SETTINGS</button>
+        </form>
+      </div>
+      <div class="user-page__picture">
+        <img src="./img/user.png" alt="{{ADD  NAME}}" class="user-page__avatar">
+        <a href="#" class="user-page__updatePicture">Update picture</a>
+      </div>
+      <div class="user__form">
+        <p class="user__form-text">Current password</p>
+        <input type="password" placeholder="••••••••" class="user__form-input">
+        <p class="user__form-text">New password</p>
+        <input type="password" placeholder="••••••••" class="user__form-input">
+        <p class="user__form-text">Confirm password</p>
+        <input type="password" placeholder="••••••••" class="user__form-input">
+        <button class="user__form-button btn btn--form-white">SAVE PASSWORD</button>
+      </div>
+      <div class=" user-posts">
+        <h3 class="user-page__header">Your posts</h3>
+        <div class="post">
+          <a href="#" class="post__left no-decoration">
+            <h3 class="post__left-header">What the hell is going on with the world?</h3>
+            <p class="post__left-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut lacinia libero id
+              nisi
+              hendrerit elementum.
+              Proin molestie rhoncus ie rhoncus augue viie rhoncus augue viie rhoncus augue viie rhoncus augue viie
+              rhoncus augue viie rhoncus augue vi augue
+              vitae bibendum….</p>
+          </a>
+          <div class="post__rating">
+            <p class="post__rating-like">Like(53)</p>
+            <p class="post__rating-dislike">Dislike(23)</p>
+          </div>
+        </div>
+      </div>
+
+    </main>
+    <aside class="layout__right">
+      RIGHT SIDE
+    </aside>
+  </section>
+  <script src="./js/index.js"></script>
+</body>
+
+</html>

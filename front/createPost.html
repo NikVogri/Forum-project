@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Forum</title>
+  <meta name="description" content="Simple forum with backend">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+  <header class="header">
+    <div class="header__logo">
+      <h1 class="header__logo__main-text">Logo</h1>
+    </div>
+    <div class="header__input">
+      <form action="" class="header__input__form">
+      </form>
+    </div>
+    <div class="header__user">
+      <a href="#" class="header__user__logout btn no-decoration">Log out</a>
+      <div class="user__profile">
+        <img src="./img/user.png" alt="{{ADD  NAME}}" class="user__profile__picture">
+        <p class="user__profile__username">Nick</p>
+      </div>
+    </div>
+  </header>
+  <main class="newpost">
+    <form action="#" class="newpost__form">
+      <input type="text" class="newpost__title" placeholder="Enter Title..." required>
+      <textarea placeholder="Enter Text..." class="newpost__text" required></textarea>
+      <input type="text" class="newpost__common" placeholder="Common phrases..." required>
+      <button class="btn btn--form-white" required>Create Post</button>
+    </form>
+  </main>
+  <script src="./js/index.js"></script>
+</body>
+
+</html>

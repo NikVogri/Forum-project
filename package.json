@@ -6,10 +6,10 @@
   "scripts": {
     "start": "nodemon app.js",
     "watch:js": "parcel watch ./front/js/index.js --out-dir ./front/js --out-file bundle.js",
-    "watch:sass": "node-sass front/main.scss front/css/style.css -w",
+    "watch:sass": "node-sass front/sass/main.scss front/css/style.css -w",
     "devserver": "live-server",
     "start:front": "npm-run-all --parallel devserver watch:sass",
-    "compile:sass": "node-sass front/main.scss front/css/style.comp.css",
+    "compile:sass": "node-sass front/sass/main.scss front/css/style.comp.css",
     "prefix:css": "postcss --use autoprefixer -b \"last 10 versions\" front/css/style.comp.css -o front/css/style.prefix.css",
     "compress:css": "node-sass front/css/style.prefix.css front/css/style.css --output-style compressed",
     "build": "npm-run-all compile:sass prefix:css compress:css"

@@ -1,0 +1,51 @@
+.user-page {
+  &__header {
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 2rem 0;
+  }
+
+  &__avatar {
+    height: 5rem;
+    width: 5rem;
+    margin-right: 1rem;
+  }
+
+  &__picture {
+    width: 30rem;
+    margin: 3rem auto;
+    text-align: left;
+  }
+
+  &__updatePicture {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: var(--main-color);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+
+.user__form {
+  width: 30rem;
+  margin: 0 auto;
+
+  &-text {
+    font-size: 1.3rem;
+    margin-top: 1rem;
+  }
+
+  &-input {
+    padding: .5rem 0;
+    width: 100%;
+  }
+
+  &-button {
+    display: block;
+    margin: 1rem 0;
+  }
+
+}

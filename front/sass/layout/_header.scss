@@ -90,16 +90,24 @@
 .user__profile {
   display: flex;
   justify-content: center;
+  border: solid 1px transparent;
+  margin-left: .5rem;
+  transition: all .2s ease;
 
   &__picture {
-    margin-left: 2rem;
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
   }
 
   &__username {
     font-size: 2rem;
     margin-left: 1rem;
+    padding-right: 1rem;
     align-self: center;
+  }
+
+  &:hover {
+    cursor: pointer;
+    @include buttonAnimation;
   }
 }

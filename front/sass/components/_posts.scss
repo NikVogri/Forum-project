@@ -8,6 +8,11 @@
     padding: 1rem;
     transition: all .2s ease;
 
+    &-originalPoster {
+      display: inline-block;
+      align-self: center;
+    }
+
     &:hover {
       @include buttonAnimation;
     }
@@ -48,4 +53,8 @@
     }
   }
 
+}
+
+.header__wrapper {
+  display: flex;
 }

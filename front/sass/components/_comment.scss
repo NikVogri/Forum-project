@@ -1,0 +1,29 @@
+.comment {
+  padding: 2rem;
+  border-bottom: solid 1px var(--main-color);
+  display: flex;
+
+  &__wrapper {
+    &-username {
+      display: inline-block;
+      padding: .3rem;
+      font-size: 1.5rem;
+    }
+
+    &-text {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin: 1rem 0;
+    }
+  }
+}
+
+.date__wrapper {
+  font-size: 1.3rem;
+  text-align: center;
+  display: flex;
+
+  &-time {
+    margin-right: 1rem;
+  }
+}

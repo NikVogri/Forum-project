@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Forum</title>
+  <meta name="description" content="Simple forum with backend">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+  <header class="header">
+    <div class="header__logo">
+      <h1 class="header__logo__main-text">Logo</h1>
+    </div>
+    <div class="header__input">
+    </div>
+    <div class="header__user">
+      <a href="#" class="header__user__login btn">Log in</a>
+      <a href="#" class="header__user__signup btn">Sign up</a>
+      <!--IF USER LOGGED IN DISPLAY THIS
+              IF USER LOGGED IN DISPLAY THIS
+            <a href="#" class="header__user__logout btn no-decoration">Log out</a>
+          <div class="user__profile">
+            <img src="./img/user.png" alt="{{ADD  NAME}}" class="user__profile__picture">
+            <p class="user__profile__username">Nick</p>
+          </div> 
+          IF USER LOGGED IN DISPLAY THIS
+          IF USER LOGGED IN DISPLAY THIS-->
+    </div>
+  </header>
+  <section class="layout">
+    <aside class="layout__left">
+      LEFT
+    </aside>
+    <main class="layout__main">
+      <section class="main__post">
+        <p class="main__post-poster btn">MyNameIsDjeringo</p>
+        <h3 class="main__post-header">What the hell is going on with the world?</h3>
+        <p class="main__post-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras venenatis tincidunt
+          ipsum, eget consectetur turpis ullamcorper et. Maecenas mattis mi eget leo vestibulum maximus. Cras sodales
+          lacinia urna, eu viverra sapien porttitor quis. Donec nec justo sed quam sollicitudin rutrum. Donec urna sem,
+          vehicula vitae enim at, porttitor tempor ante. Donec faucibus aliquam condimentum. Duis quis feugiat magna.
+          Aliquam ultricies fringilla velit sed gravida. Nullam auctor, lacus molestie mattis scelerisque, nunc velit
+          vehicula est, id ultrices est odio ac augue. Mauris interdum arcu eu lorem semper vulputate. Fusce eget sem
+          tortor.
+
+          Fusce vehicula quam tortor, quis scelerisque odio sagittis ut. Aenean eu lorem congue, ultricies arcu non,
+          vehicula quam. Nam eget interdum ex. Etiam quis urna lorem. Suspendisse non elit vel turpis tincidunt ornare
+          molestie ac nisl. Curabitur eu tortor dignissim, elementum elit eu, pellentesque ipsum. Aenean quis metus
+          ullamcorper, blandit quam quis, suscipit sem.</p>
+        <div class="main__post-rating">
+          <p class="main__post-like btn btn--dark">Like(53)</p>
+          <p class="main__post-dislike btn btn--dark">Dislike(5)</p>
+        </div>
+      </section>
+      <section class="comments">
+        <div class="comment">
+          <div class="comment__wrapper">
+            <p class="comment__wrapper-username btn">
+              Nickolas The Third
+            </p>
+            <p class="comment__wrapper-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper lacus at neque tempus finibus.
+              Fusce mollis nulla ut consectetur pretium. Nam eu elementum sapien, eu pulvinar nibh. Phasellus commodo
+              elit ac felis scelerisque, sit amet ornare nibh tempus. Quisque at blandit magna. Sed nunc tortor, iaculis
+              in nisl ac,
+            </p>
+            <div class="date__wrapper">
+              <p class="date__wrapper-time">13:11</p>
+              <p class="date__wrapper-date">2/11/19</p>
+            </div>
+          </div>
+        </div>
+        </div>
+
+      </section>
+    </main>
+    <aside class="layout__right">RIGHT</aside>
+  </section>
+  <script src="./js/index.js"></script>
+</body>
+
+</html>

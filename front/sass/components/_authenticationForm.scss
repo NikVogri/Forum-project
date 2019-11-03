@@ -1,0 +1,36 @@
+.form {
+  height: calc(100vh - 10rem);
+  position: relative;
+
+  &__form {
+    display: inline-block;
+    width: 25rem;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    text-align: center;
+
+    & input {
+      padding: 1rem .5rem;
+
+    }
+
+    & * {
+      margin-top: 1rem;
+    }
+  }
+
+  &__text {
+    margin-bottom: 2rem;
+    font-size: 3rem;
+
+  }
+
+  &__country {
+    padding: 1rem 0;
+  }
+}

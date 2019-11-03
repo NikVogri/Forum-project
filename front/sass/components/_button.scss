@@ -9,6 +9,11 @@
     font-size: 3.5rem;
   }
 
+  &--wideThin {
+    padding: .5rem 5rem;
+
+  }
+
   &--dark {
     background: var(--main-color);
     color: var(--main-color-white);
@@ -18,6 +23,25 @@
       background: var(--main-color-white);
       color: var(--main-color);
 
+    }
+  }
+
+  &--form {
+    &:hover {
+      background: var(--main-color-white);
+      color: var(--main-color);
+      cursor: pointer;
+    }
+  }
+
+  &--form-white {
+    background: var(--main-color-white);
+    color: var(--main-color);
+
+    &:hover {
+      background: var(--main-color);
+      color: var(--main-color-white);
+      cursor: pointer;
     }
   }
 }
