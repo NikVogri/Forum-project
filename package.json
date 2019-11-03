@@ -1,0 +1,42 @@
+{
+  "name": "forum-project",
+  "version": "1.0.0",
+  "description": "forum project using express, mysql, node & pug",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "watch:js": "parcel watch ./front/js/index.js --out-dir ./front/js --out-file bundle.js",
+    "watch:sass": "node-sass front/main.scss front/css/style.css -w",
+    "devserver": "live-server",
+    "start:front": "npm-run-all --parallel devserver watch:sass",
+    "compile:sass": "node-sass front/main.scss front/css/style.comp.css",
+    "prefix:css": "postcss --use autoprefixer -b \"last 10 versions\" front/css/style.comp.css -o front/css/style.prefix.css",
+    "compress:css": "node-sass front/css/style.prefix.css front/css/style.css --output-style compressed",
+    "build": "npm-run-all compile:sass prefix:css compress:css"
+  },
+  "author": "Nik Vogrinec",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/polyfill": "^7.6.0",
+    "axios": "^0.19.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.7.1",
+    "concat": "^1.0.3",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.16.0",
+    "live-server": "^1.2.1",
+    "node-sass": "^4.13.0",
+    "npm-run-all": "^4.1.5",
+    "parcel-bundler": "^1.12.4",
+    "postcss-cli": "^6.1.3",
+    "prettier": "^1.18.2"
+  }
+}

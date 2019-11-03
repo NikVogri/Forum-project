@@ -1,0 +1,51 @@
+.post {
+  display: flex;
+  height: 8rem;
+  border-bottom: solid 1px var(--main-color);
+
+  &__left {
+    width: 90%;
+    padding: 1rem;
+    transition: all .2s ease;
+
+    &:hover {
+      @include buttonAnimation;
+    }
+
+    &-header {
+      font-size: 2rem;
+      margin-bottom: 0.4rem;
+    }
+
+    &-text {
+      font-size: 1.35rem;
+    }
+  }
+
+  &__rating {
+    width: 10%;
+    border-left: solid 1px var(--main-color);
+    font-size: 1.5rem;
+
+    &-like {
+      @include centerRatio;
+      border-bottom: 1px solid var(--main-color);
+
+      &:hover {
+        @include buttonAnimation;
+        cursor: pointer;
+      }
+    }
+
+    &-dislike {
+      @include centerRatio;
+      height: 50%;
+
+      &:hover {
+        @include buttonAnimation;
+        cursor: pointer;
+      }
+    }
+  }
+
+}

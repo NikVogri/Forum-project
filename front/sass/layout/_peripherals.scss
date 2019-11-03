@@ -1,0 +1,13 @@
+.layout__left {
+  &-post {
+    display: inline-block;
+    @include centerButtonsLeft;
+    top: 2rem;
+  }
+
+  &-myposts {
+    display: inline-block;
+    @include centerButtonsLeft;
+    top: 7.5rem;
+  }
+}

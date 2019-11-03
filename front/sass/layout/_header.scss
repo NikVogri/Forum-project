@@ -1,0 +1,105 @@
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  height: 10rem;
+  width: 100%;
+  border-bottom: 1px solid var(--main-color);
+  display: flex;
+  justify-content: space-between;
+  background: var(--main-color-white);
+
+  &__logo,
+  &__input,
+  &__user {
+    width: 33.3%;
+    height: 100%;
+  }
+
+  &__logo {
+    &__main-text {
+      font-size: 7.5rem;
+      padding-left: 10rem;
+    }
+  }
+
+  &__input {
+    &__form {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &__input {
+        padding: 0.5rem 0;
+        width: 60%;
+        transition: width 0.1s ease;
+
+        &:focus {
+          width: 61%;
+        }
+      }
+
+      // NEEDS FIXING - ON LOWER SCREENS BUTTON IS NOT ALIGNED WITH INPUT
+      &__button {
+        padding: 4.5px;
+        font-size: 15px;
+        width: 6rem;
+        text-align: center;
+        border: solid 1px var(--main-color);
+        transition: all 0.1s ease;
+
+        &:hover {
+          @include buttonAnimation;
+        }
+      }
+    }
+  }
+
+  &__user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+
+    &__login {
+      margin-right: 1.5rem;
+
+      &:hover {
+        @include buttonAnimation;
+      }
+    }
+
+    &__signup {
+
+      &:hover {
+        @include buttonAnimation;
+      }
+    }
+
+    &__logout {
+
+      &:hover {
+        @include buttonAnimation;
+      }
+    }
+  }
+}
+
+.user__profile {
+  display: flex;
+  justify-content: center;
+
+  &__picture {
+    margin-left: 2rem;
+    height: 50px;
+    width: 50px;
+  }
+
+  &__username {
+    font-size: 2rem;
+    margin-left: 1rem;
+    align-self: center;
+  }
+}

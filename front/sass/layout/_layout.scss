@@ -1,0 +1,26 @@
+.layout {
+  display: flex;
+
+  &__left {
+    height: calc(100vh - 10rem);
+    position: sticky;
+    top: 10rem;
+    left: 0;
+
+    width: 20%;
+  }
+
+  &__right {
+    height: calc(100vh - 10rem);
+    width: 20%;
+    position: sticky;
+    top: 10rem;
+    right: 0;
+  }
+
+  &__main {
+    width: 60%;
+    border-left: 1px solid var(--main-color);
+    border-right: 1px solid var(--main-color);
+  }
+}
