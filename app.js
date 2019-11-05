@@ -7,14 +7,14 @@ const port = process.env.PORT || 3000;
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 50, // api request limit
+  max: 5000, // api request limit
   statusCode: 429,
   message: {
     status: 'error',
     message: 'Limit reached please wait a couple of minutes before trying again'
   }
 });
-
+app.use(express.json({ limit: '10kb' }));
 app.use(limiter);
 // API ROUTE
 app.use('/api/v1', apiRoutes);
