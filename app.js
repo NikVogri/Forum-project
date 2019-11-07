@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const path = require('path');
 const rateLimit = require('express-rate-limit');
 const apiRoutes = require('./routes/apiRoutes');
@@ -25,6 +26,7 @@ const limiter = rateLimit({
 app.use(express.json({ limit: '10kb' }));
 app.use(limiter);
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // APP ROUTE
 app.use('/', viewRouter);

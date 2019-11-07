@@ -32,6 +32,10 @@ Post.init(
       type: Sequelize.INTEGER,
       defaultValue: 0
     },
+    common_phrases: {
+      type: Sequelize.TEXT,
+      defaultValue: 0
+    },
     comments: {
       type: Sequelize.INTEGER,
       defaultValue: 0

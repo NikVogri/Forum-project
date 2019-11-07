@@ -1,10 +1,11 @@
 header.header
   .header__logo
-    h1.header__logo__main-text Logo
+    a(href="/")
+      h1.header__logo__main-text Logo
   .header__input
-    form.header__input__form(action='')
-      input.header__input__form__input(type='text' placeholder='Search forum...')
-      a.header__input__form__button.no-decoration(href='#') Search
+    form.header__input__form(action='/search/post' method='POST')
+      input.header__input__form__input(type='text' placeholder='Search forum by post name...' name="search")
+      button.header__input__form__button.no-decoration(href='#') Search
   .header__user
     a.header__user__login.btn(href='#') Log in
     a.header__user__signup.btn(href='#') Sign up

@@ -6,7 +6,7 @@
   <title>Forum</title>
   <meta name="description" content="Simple forum with backend">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
@@ -35,6 +35,17 @@
       LEFT
     </aside>
     <main class="layout__main">
+      <section class="showComment hidden">
+        <div class="showComment__background">
+        <div class="showComment__main">
+          <h1 class="showComment__header">Add a new comment</h1>
+          <form action="#" class="showComment__form">
+            <textarea cols="30" rows="10" class="showComment__input" maxlength="200"></textarea>
+            <button class="showComment__btn btn btn--dark">Create comment</button>
+          </form>
+          <p class="showComment__close">X</p>
+        </div></div>
+      </section>
       <section class="main__post">
         <p class="main__post-poster btn">MyNameIsDjeringo</p>
         <h3 class="main__post-header">What the hell is going on with the world?</h3>
@@ -53,6 +64,7 @@
         <div class="main__post-rating">
           <p class="main__post-like btn btn--dark">Like(53)</p>
           <p class="main__post-dislike btn btn--dark">Dislike(5)</p>
+          <p class="newComment__button btn btn--dark">Reply</p>
         </div>
       </section>
       <section class="comments">
@@ -74,12 +86,13 @@
           </div>
         </div>
         </div>
-
       </section>
     </main>
     <aside class="layout__right">RIGHT</aside>
   </section>
-  <script src="./js/index.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="../js/index.js"></script>
 </body>
 
 </html>

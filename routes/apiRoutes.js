@@ -20,4 +20,10 @@ router
   .delete(postController.deletePost)
   .patch(postController.updatePost)
   .post(commentController.createComment);
+
+router.route('/comments').get(commentController.getAllComments);
+router
+  .route('/comments/:id')
+  .patch(commentController.editComment)
+  .delete(commentController.deleteComment);
 module.exports = router;
