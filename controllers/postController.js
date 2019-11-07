@@ -1,5 +1,6 @@
-const Post = require('../models/postModel');
 const uniqid = require('uniqid');
+const Post = require('../models/postModel');
+const Comments = require('../models/commentModel');
 
 exports.getAllPosts = async (req, res, next) => {
   try {
@@ -21,21 +22,29 @@ exports.getAllPosts = async (req, res, next) => {
 
 exports.createPost = async (req, res, next) => {
   try {
-    const result = await Post.create({
-      title: req.body.title,
-      body: req.body.body,
-      poster: req.body.poster,
-      id: uniqid.process()
-    });
-    res.status(200).json({
-      status: 'success',
-      result
-    });
-    next();
+    if (req.body.title && req.body.body && req.body.poster) {
+      const result = await Post.create({
+        title: req.body.title,
+        body: req.body.body,
+        poster: req.body.poster,
+        id: uniqid.process()
+      });
+      res.status(200).json({
+        status: 'success',
+        result
+      });
+      next();
+    } else {
+      res.status(500).json({
+        status: 'fail',
+        message: 'Please provide title, body and original poster username!'
+      });
+      next();
+    }
   } catch (err) {
     res.status(500).json({
       status: 'fail',
-      message: err
+      message: err.message
     });
     next();
   }
@@ -44,13 +53,27 @@ exports.createPost = async (req, res, next) => {
 exports.getPost = async (req, res, next) => {
   try {
     const postId = req.params.id;
-    let post = await Post.findByPk(postId);
-    if (!post) post = 'Cannot find specified post';
-    res.status(200).json({
-      status: 'success',
-      post
-    });
-    next();
+    // Check if post exists
+    const post = await Post.findByPk(postId);
+    if (post) {
+      // Get post comments
+      const comment = await Comments.findAll({ where: { post_id: postId } });
+      // Update post comments
+      await post.update({
+        comments: comment.length
+      });
+      res.status(200).json({
+        status: 'success',
+        post: !post ? 'Cannot find specified post' : post
+      });
+      next();
+    } else {
+      res.status(404).json({
+        status: 'fail',
+        message: 'Post not found'
+      });
+      next();
+    }
   } catch (err) {
     res.status(404).json({
       status: 'fail',
@@ -89,12 +112,11 @@ exports.updatePost = async (req, res, next) => {
     if (req.body.title || req.body.body) {
       const postId = req.params.id;
       const post = await Post.findByPk(postId);
-      const update = req.body;
       if (post) {
-        const updatedPost = await Post.update(
+        await Post.update(
           {
-            title: update.title,
-            body: update.body
+            title: req.body.title,
+            body: req.body.body
           },
           {
             where: {

@@ -1,0 +1,24 @@
+extends base
+
+block content
+  section.layout
+    aside.layout__left
+      | LEFT
+    main.layout__main
+      section.main__post
+        p.main__post-poster.btn #{post.poster}
+        h3.main__post-header #{post.title}
+        p.main__post-text #{post.body}
+        .main__post-rating
+          p.main__post-like.btn.btn--dark Like(#{post.like})
+          p.main__post-dislike.btn.btn--dark Dislike(#{post.dislike})
+      section.comments
+        //- for comment in comments
+        //- .comment
+        //-   .comment__wrapper
+        //-     p.comment__wrapper-username.btn #{comment.poster}
+        //-     p.comment__wrapper-text #{comment.body}
+        //-     .date__wrapper
+        //-       p.date__wrapper-time #{comment.createdAt.slice(12,17)}
+        //-       p.date__wrapper-date #{comment.createdAt.slice(0, 11)}
+    aside.layout__right RIGHT

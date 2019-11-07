@@ -3,18 +3,14 @@ const sequelize = require('../mysql');
 
 const { Model } = Sequelize;
 
-class Post extends Model {}
-Post.init(
+class Comment extends Model {}
+Comment.init(
   {
     id: {
       type: Sequelize.STRING,
       allowNull: false,
       unique: true,
       primaryKey: true
-    },
-    title: {
-      type: Sequelize.STRING,
-      allowNull: false
     },
     body: {
       type: Sequelize.TEXT,
@@ -24,22 +20,15 @@ Post.init(
       type: Sequelize.TEXT,
       allowNull: false
     },
-    like: {
-      type: Sequelize.INTEGER,
-      defaultValue: 0
-    },
-    dislike: {
-      type: Sequelize.INTEGER,
-      defaultValue: 0
-    },
-    comments: {
-      type: Sequelize.INTEGER,
-      defaultValue: 0
+    post_id: {
+      type: Sequelize.TEXT,
+      allowNull: false
     }
   },
   {
     sequelize,
-    modelName: 'Post'
+    modelName: 'Comment'
   }
 );
-module.exports = Post;
+
+module.exports = Comment;
