@@ -1,0 +1,9 @@
+extends base
+
+block content
+  main.form
+    form.form__form(action='/userLogin' method="POST" )
+      p.form__text Log in
+      input.form__email(type='email' placeholder='Email...' required='' name="email")
+      input.form__password(type='password' placeholder='Password...' required='' name="password")
+      button.form__btn.btn.btn--form Log in
