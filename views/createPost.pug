@@ -2,6 +2,7 @@ extends base
 
 block content
   main.newpost
+    h3.user-page__header Create new post
     form.newpost__form(action='/newPost/createNew' method='POST')
       input.newpost__title(type='text' placeholder='Enter Title...' required='' name='title')
       textarea.newpost__text(placeholder='Enter Text...' required='' name='body')

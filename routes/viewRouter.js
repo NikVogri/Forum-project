@@ -5,6 +5,7 @@ const userController = require('../controllers/userController');
 
 const router = express.Router();
 
+router.use(authController.isLoggedIn);
 router.get('/post/:id', viewController.getPost);
 router.get('/', viewController.getIndex);
 router.get(
@@ -13,11 +14,24 @@ router.get(
   authController.checkStatus,
   viewController.getCreatePost
 );
-router.use('/newPost/createNew', viewController.createPost);
-router.use('/search/post', viewController.findPostbyQuery);
-router.use('/post/:id/createComment', viewController.createComment);
-router.use('/signup', viewController.signup);
-router.use('/login', viewController.login);
-router.use('/userLogin', viewController.userLogin);
-router.use('/logout', userController.logout);
+// FORMS
+router.post('/search/post', viewController.findPostbyQuery);
+router.post('/post/:id/createComment', viewController.createComment);
+router.post('/userLogin', viewController.userLogin);
+router.post('/newPost/createNew', viewController.createPost);
+router.post('/register', viewController.register);
+// PATCHES
+router.use('/updateVisible', viewController.updateVisible);
+router.use('/updatePassword', viewController.updatePassword);
+router.use('/:postId/:rating', viewController.ratePost);
+// RENDERS
+router.get('/signup', viewController.getSignup);
+router.get('/login', viewController.getLogin);
+router.get('/logout', userController.logout);
+router.get(
+  '/user',
+  authController.verifyToken,
+  authController.checkStatus,
+  viewController.getUser
+);
 module.exports = router;

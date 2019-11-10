@@ -4,7 +4,7 @@ block content
   section.layout
     aside.layout__left
     
-      <a href="#" class="btn btn--dark layout__left-myposts">My posts</a>
+      <a href="/user" class="btn btn--dark layout__left-myposts">Profile</a>
       <a href="/newPost" class="btn btn--dark layout__left-post">New post</a>
     main.layout__main
       each post in posts
@@ -15,7 +15,9 @@ block content
               p.post__left-originalPoster #{post.poster}
             p.post__left-text #{post.body.length > 200 ? post.body.slice(0,200).concat('...') : post.body}
           .post__rating
-            p.post__rating-like Like(#{post.like})
-            p.post__rating-dislike Dislike(#{post.dislike})
+            a(href=`/${post.id}/like`)
+              p.post__rating-like Like(#{post.like})
+            a(href=`/${post.id}/dislike`)
+              p.post__rating-dislike Dislike(#{post.dislike})
     aside.layout__right
       | RIGHT SIDE

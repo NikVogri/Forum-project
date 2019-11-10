@@ -3,7 +3,8 @@ extends base
 block content
   section.layout
     aside.layout__left
-      | LEFT
+      <a href="/user" class="btn btn--dark layout__left-myposts">Profile</a>
+      <a href="/newPost" class="btn btn--dark layout__left-post">New post</a>
     main.layout__main
       section.main__post
         section.showComment.hidden
@@ -18,8 +19,10 @@ block content
         h3.main__post-header #{post.title}
         p.main__post-text #{post.body}
         .main__post-rating
-          p.main__post-like.btn.btn--dark Like(#{post.like})
-          p.main__post-dislike.btn.btn--dark Dislike(#{post.dislike})
+          a(href=`/${post.id}/like`)
+            p.main__post-like.btn.btn--dark Like(#{post.like})
+          a(href=`/${post.id}/dislike`)
+            p.main__post-dislike.btn.btn--dark Dislike(#{post.dislike})
           p.newComment__button.btn.btn--dark Reply
       section.comments
         for comment in comments

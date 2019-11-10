@@ -24,7 +24,8 @@ User.init(
     },
     username: {
       type: Sequelize.STRING,
-      allowNull: false
+      allowNull: false,
+      unique: true
     },
     name: {
       type: Sequelize.STRING,
@@ -52,4 +53,5 @@ User.init(
     modelName: 'User'
   }
 );
+
 module.exports = User;

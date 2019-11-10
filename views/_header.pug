@@ -9,10 +9,11 @@ header.header
   .header__user
     if user
       <a href="/logout" class="header__user__logout btn no-decoration">Log out</a>
-      <div class="user__profile">
-      <img src="./img/user.png" alt="{{ADD  NAME}}" class="user__profile__picture">
-      <p class="user__profile__username">Nick</p>
-      </div>
+      a(href="/user")
+        <div class="user__profile">
+        <img src="./img/user.png" alt="user picture" class="user__profile__picture">
+        <p class="user__profile__username">#{user.username}</p>
+        </div>
     else
       a.header__user__login.btn(href='/login') Log in
       a.header__user__signup.btn(href='/signup') Sign up

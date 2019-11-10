@@ -2,13 +2,14 @@ extends base
 
 block content
   main.form
-    form.form__form(action='#')
+    form.form__form(action='/register' method='POST')
       p.form__text Create user
-      input.form__email(type='name' placeholder='Name...' required='')
-      input.form__email(type='surname' placeholder='Surname...' required='')
-      input.form__email(type='email' placeholder='Email...' required='')
-      input.form__password(type='password' placeholder='Password...' required='')
-      input.form__password(type='password' placeholder='Confirm Password...' required='')
+      input.form__email(type='text' name="name" placeholder='Name...' required='')
+      input.form__email(type='text' name="surname" placeholder='Surname...' required='')
+      input.form__password(type='text' name="username" placeholder='Username...' required='')
+      input.form__email(type='email' name="email" placeholder='Email...' required='')
+      input.form__password(type='password' name="password" placeholder='Password...' required='')
+      input.form__password(type='password' name="confirmPassword" placeholder='Confirm Password...' required='')
       select#country.form__country(name='country' required='')
         option(value='Afghanistan') Afghanistan
         option(value='Åland Islands') &angst;land Islands

@@ -128,6 +128,7 @@ exports.login = async (req, res, next) => {
           email: req.body.email
         }
       });
+      console.log(req.body.password);
       if (user.length === 0) {
         res.status(400).json({
           status: 'fail',
@@ -142,9 +143,7 @@ exports.login = async (req, res, next) => {
         const bearer = jwt.sign(
           {
             data: {
-              username: user[0].username,
-              email: user[0].email,
-              name: user[0].name
+              username: user[0].username
             }
           },
           process.env.SECRET,

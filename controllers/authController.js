@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const User = require('../models/userModel');
 
 exports.verifyToken = async (req, res, next) => {
   try {
@@ -21,8 +22,8 @@ exports.verifyToken = async (req, res, next) => {
   }
 };
 
-exports.checkStatus = (req, res, next) => {
-  jwt.verify(req.token, process.env.SECRET, err => {
+exports.checkStatus = async (req, res, next) => {
+  await jwt.verify(req.token, process.env.SECRET, err => {
     if (err) {
       res.status(500).json({
         status: 'fail',
@@ -32,4 +33,26 @@ exports.checkStatus = (req, res, next) => {
       next();
     }
   });
+};
+
+exports.isLoggedIn = async (req, res, next) => {
+  try {
+    if (req.cookies.jwt) {
+      const userExists = await User.findAll({
+        where: { username: await jwt.decode(req.cookies.jwt).data.username }
+      });
+      if (userExists.length === 0) {
+        req.loggedIn = false;
+        res.clearCookie('jwt');
+      } else {
+        req.loggedIn = true;
+      }
+    } else req.loggedIn = false;
+    next();
+  } catch (err) {
+    res.status(500).json({
+      status: 'fail',
+      message: err.message
+    });
+  }
 };
