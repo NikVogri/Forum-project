@@ -46,6 +46,11 @@ User.init(
     comments: {
       type: Sequelize.STRING,
       allowNull: true
+    },
+    image: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      defaultValue: 'default-user.jpg'
     }
   },
   {
@@ -53,5 +58,4 @@ User.init(
     modelName: 'User'
   }
 );
-
 module.exports = User;

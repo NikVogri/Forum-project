@@ -1,9 +1,61 @@
+const multer = require('multer');
+const sharp = require('sharp');
 const uniqid = require('uniqid');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
 const Post = require('../models/postModel');
 const Comments = require('../models/commentModel');
+
+const multerStorage = multer.memoryStorage();
+
+const multerFilter = (req, file, cb) => {
+  if (file.mimetype.startsWith('image')) {
+    cb(null, true);
+  } else {
+    console.log('Image processing error');
+  }
+};
+
+const upload = multer({
+  storage: multerStorage,
+  fileFilter: multerFilter
+});
+
+exports.uploadUserPhoto = upload.single('image');
+
+exports.resizeUserPhoto = async (req, res, next) => {
+  try {
+    if (!req.file) {
+      console.log('no files selected');
+    }
+    console.log('here');
+    const username = await jwt.decode(req.cookies.jwt).data.username;
+    const filename = `user-${username}-${Date.now()}.jpg`;
+    await sharp(req.file.buffer)
+      .resize(415, 415)
+      .toFormat('jpeg')
+      .jpeg({ quality: 90 })
+      .toFile(`front/img/${filename}`);
+    await User.update(
+      { image: filename },
+      {
+        where: {
+          username
+        }
+      }
+    );
+    res.status(200).redirect('back');
+    next();
+    next();
+  } catch (err) {
+    res.status(500).json({
+      status: 'fail',
+      message: err.message
+    });
+    next();
+  }
+};
 
 exports.getAllUsers = async (req, res, next) => {
   try {
@@ -128,7 +180,6 @@ exports.login = async (req, res, next) => {
           email: req.body.email
         }
       });
-      console.log(req.body.password);
       if (user.length === 0) {
         res.status(400).json({
           status: 'fail',

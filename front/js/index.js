@@ -1,5 +1,6 @@
 /* eslint-disable */
-
+import axios from 'axios';
+import '@babel/polyfill';
 // Reply button to open comment input form
 $('.newComment__button').click(() => {
   $('.showComment').toggleClass('hidden');

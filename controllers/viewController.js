@@ -8,13 +8,27 @@ const Comment = require('../models/commentModel');
 
 // BASIC RENDERS
 exports.getIndex = async (req, res, next) => {
-  let user;
-  if (req.loggedIn) {
-    user = await jwt.decode(req.cookies.jwt).data;
-  }
   const posts = await Post.findAll({
     order: [['createdAt', 'DESC']]
   });
+  posts.forEach(async post => {
+    const comments = await Comment.findAll({
+      where: {
+        post_id: post.id
+      }
+    });
+    await Post.update(
+      {
+        comments: comments.length
+      },
+      {
+        where: {
+          id: post.id
+        }
+      }
+    );
+  });
+  const { user } = req;
   res.status(200).render('index', {
     title: 'Lightweight Forum | All Posts',
     posts,
@@ -24,10 +38,7 @@ exports.getIndex = async (req, res, next) => {
 };
 
 exports.getCreatePost = async (req, res, next) => {
-  let user;
-  if (req.loggedIn) {
-    user = await jwt.decode(req.cookies.jwt).data;
-  }
+  const { user } = req;
   res.status(200).render('createPost', {
     title: 'Lightweight Forum | Create Post',
     user
@@ -37,10 +48,7 @@ exports.getCreatePost = async (req, res, next) => {
 
 exports.getUser = async (req, res, next) => {
   try {
-    let user;
-    if (req.loggedIn) {
-      user = await jwt.decode(req.cookies.jwt).data;
-    }
+    const { user } = req;
     let currentUser = await User.findAll({
       where: { username: user.username }
     });
@@ -68,17 +76,14 @@ exports.getUser = async (req, res, next) => {
 
 exports.getPost = async (req, res, next) => {
   try {
-    let user;
-    if (req.loggedIn) {
-      user = await jwt.decode(req.cookies.jwt).data;
-    }
+    const { user } = req;
     const post = await Post.findByPk(req.params.id);
     const comments = await Comment.findAll({
       where: {
         post_id: req.params.id
       }
     });
-    res.status(200).render('post', {
+    res.status(200).render('getPost', {
       title: 'Lightweight Forum | Post',
       post,
       comments,
@@ -140,10 +145,7 @@ exports.createPost = async (req, res, next) => {
 
 exports.findPostbyQuery = async (req, res, next) => {
   try {
-    let user;
-    if (req.loggedIn) {
-      user = await jwt.decode(req.cookies.jwt).data;
-    }
+    const { user } = req;
     const posts = await Post.findAll({
       limit: 25,
       where: {
@@ -177,16 +179,13 @@ exports.findPostbyQuery = async (req, res, next) => {
 
 exports.createComment = async (req, res, next) => {
   try {
-    let user;
-    if (req.loggedIn) {
-      user = await jwt.decode(req.cookies.jwt).data;
-    }
+    const { user } = req;
     const post = await Post.findByPk(req.params.id);
     if (post && user) {
       const { id } = req.params;
       await Comment.create({
         body: req.body.body,
-        poster: user.username, //change this
+        poster: user.username,
         id: uniqid.process(),
         post_id: id
       });
@@ -194,7 +193,7 @@ exports.createComment = async (req, res, next) => {
       next();
     } else {
       res.status(404).json({
-        status: 'fail', // add error handler
+        status: 'fail',
         message: 'Please log in'
       });
       next();
@@ -240,7 +239,6 @@ exports.userLogin = async (req, res, next) => {
         next();
         return;
       }
-      console.log(req.body.password, user[0].password);
       // compare passwords
       if (bcrypt.compareSync(req.body.password, user[0].password)) {
         // send bearer token
@@ -433,49 +431,49 @@ exports.updatePassword = async (req, res, next) => {
   }
 };
 
-exports.ratePost = async (req, res, next) => {
-  try {
-    if (req.params.rating === 'like') {
-      const like = await Post.findAll({
-        where: {
-          id: req.params.postId
-        }
-      });
-      await Post.update(
-        {
-          like: like[0].like + 1
-        },
-        {
-          where: {
-            id: req.params.postId
-          }
-        }
-      );
-    }
-    if (req.params.rating === 'dislike') {
-      const dislike = await Post.findAll({
-        where: {
-          id: req.params.postId
-        }
-      });
-      await Post.update(
-        {
-          dislike: dislike[0].dislike + 1
-        },
-        {
-          where: {
-            id: req.params.postId
-          }
-        }
-      );
-    }
-    res.status(200).redirect('back');
-    next();
-  } catch (err) {
-    res.status(500).json({
-      status: 'fail',
-      message: err.message
-    });
-    next();
-  }
-};
+// exports.ratePost = async (req, res, next) => {
+//   try {
+//     if (req.params.rating === 'like') {
+//       const like = await Post.findAll({
+//         where: {
+//           id: req.params.postId
+//         }
+//       });
+//       await Post.update(
+//         {
+//           like: like[0].like + 1
+//         },
+//         {
+//           where: {
+//             id: req.params.postId
+//           }
+//         }
+//       );
+//     }
+//     if (req.params.rating === 'dislike') {
+//       const dislike = await Post.findAll({
+//         where: {
+//           id: req.params.postId
+//         }
+//       });
+//       await Post.update(
+//         {
+//           dislike: dislike[0].dislike + 1
+//         },
+//         {
+//           where: {
+//             id: req.params.postId
+//           }
+//         }
+//       );
+//     }
+//     res.status(200).redirect('back');
+//     next();
+//   } catch (err) {
+//     res.status(500).json({
+//       status: 'fail',
+//       message: err.message
+//     });
+//     next();
+//   }
+// };

@@ -11,8 +11,8 @@ header.header
       <a href="/logout" class="header__user__logout btn no-decoration">Log out</a>
       a(href="/user")
         <div class="user__profile">
-        <img src="./img/user.png" alt="user picture" class="user__profile__picture">
-        <p class="user__profile__username">#{user.username}</p>
+          img.user__profile__picture(src=`/img/${user.image}` alt='user picture')
+          p.user__profile__username #{user.username}
         </div>
     else
       a.header__user__login.btn(href='/login') Log in

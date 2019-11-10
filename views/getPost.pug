@@ -11,7 +11,7 @@ block content
           .showComment__background
             .showComment__main
               h1.showComment__header Add a new comment
-              form.showComment__form(action=`/post/${post.id}/createComment` method="post")
+              form.showComment__form(action=`/post/${post.id}/createComment` method="POST")
                 textarea.showComment__input(cols='30' rows='10' maxlength='200' name="body")
                 button.showComment__btn.btn.btn--dark Create comment
               p.showComment__close X
@@ -19,11 +19,7 @@ block content
         h3.main__post-header #{post.title}
         p.main__post-text #{post.body}
         .main__post-rating
-          a(href=`/${post.id}/like`)
-            p.main__post-like.btn.btn--dark Like(#{post.like})
-          a(href=`/${post.id}/dislike`)
-            p.main__post-dislike.btn.btn--dark Dislike(#{post.dislike})
-          p.newComment__button.btn.btn--dark Reply
+          p.newComment__button.btn.btn--dark Comment
       section.comments
         for comment in comments
           .comment

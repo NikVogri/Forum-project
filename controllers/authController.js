@@ -46,6 +46,7 @@ exports.isLoggedIn = async (req, res, next) => {
         res.clearCookie('jwt');
       } else {
         req.loggedIn = true;
+        req.user = userExists[0];
       }
     } else req.loggedIn = false;
     next();

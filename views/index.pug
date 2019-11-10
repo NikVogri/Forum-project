@@ -8,16 +8,14 @@ block content
       <a href="/newPost" class="btn btn--dark layout__left-post">New post</a>
     main.layout__main
       each post in posts
-        .post
+        .post( data-post=`${post.id}`)
           a.post__left.no-decoration(href=`/post/${post.id}`)
             .header__wrapper
               h3.post__left-header #{post.title}
               p.post__left-originalPoster #{post.poster}
             p.post__left-text #{post.body.length > 200 ? post.body.slice(0,200).concat('...') : post.body}
           .post__rating
-            a(href=`/${post.id}/like`)
-              p.post__rating-like Like(#{post.like})
-            a(href=`/${post.id}/dislike`)
-              p.post__rating-dislike Dislike(#{post.dislike})
+            p.post__rating-like #{post.createdAt.toString().slice(0,21)}
+            p.post__rating-num #{post.comments}
     aside.layout__right
       | RIGHT SIDE
